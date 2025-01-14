@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PSP Boundary Drawing Tool</title>
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <!-- Leaflet Draw CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-draw/dist/leaflet.draw.css" />
+  <!-- Proj4js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.8.0/proj4.js"></script>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="sidebar">
+    <h2>PSP Boundary Drawing Tool</h2>
+    <label for="expert-name">Expert Name:</label>
+    <input type="text" id="expert-name" placeholder="Enter your name">
+    <label for="expert-specialty">Specialty:</label>
+    <select id="expert-specialty">
+      <option value="vegetation">Vegetation</option>
+      <option value="soil">Soil</option>
+      <option value="hydrology">Hydrology</option>
+      <option value="other">Other</option>
+    </select>
+    <hr>
+    <h3>Assign Weighting Criteria</h3>
+    <div id="weight-form" style="display: none;">
+      <h4>TPA ID: <span id="tpa-id"></span></h4>
+      <table>
+        <tr><th>Criterion</th><th>Weight (5 = Best, 1 = Worst)</th></tr>
+        <tr><td>EC</td><td><input type="number" class="weight" name="EC" min="1" max="5"></td></tr>
+        <tr><td>CaCO3</td><td><input type="number" class="weight" name="CaCO3" min="1" max="5"></td></tr>
+        <tr><td>SP</td><td><input type="number" class="weight" name="SP" min="1" max="5"></td></tr>
+        <tr><td>ESP</td><td><input type="number" class="weight" name="ESP" min="1" max="5"></td></tr>
+        <tr><td>Diversity of terrestrial vegetation</td><td><input type="number" class="weight" name="Diversity" min="1" max="5"></td></tr>
+        <tr><td>Conservation value</td><td><input type="number" class="weight" name="Conservation" min="1" max="5"></td></tr>
+        <tr><td>Depression zones</td><td><input type="number" class="weight" name="Depression" min="1" max="5"></td></tr>
+        <tr><td>Soil infiltration rates</td><td><input type="number" class="weight" name="Infiltration" min="1" max="5"></td></tr>
+        <tr><td>Nearness to water channel</td><td><input type="number" class="weight" name="Nearness" min="1" max="5"></td></tr>
+        <tr><td>Slope</td><td><input type="number" class="weight" name="Slope" min="1" max="5"></td></tr>
+        <tr><td>Accessibility and safety</td><td><input type="number" class="weight" name="Accessibility" min="1" max="5"></td></tr>
+        <tr><td>Representativeness</td><td><input type="number" class="weight" name="Representativeness" min="1" max="5"></td></tr>
+        <tr><td>Distance from TPA entrance</td><td><input type="number" class="weight" name="Distance" min="1" max="5"></td></tr>
+      </table>
+      <button onclick="saveWeights()">Save Weights</button>
+    </div>
+    <button onclick="startDrawing()">Start Drawing</button>
+    <button onclick="exportData()">Finish</button> <!-- Finish button moved here -->
+    <hr>
+    <h3>Load Expert Input</h3>
+    <input type="file" id="geojson-file" accept=".geojson">
+    <button onclick="loadGeoJSON()">Load GeoJSON</button>
+  </div>
+  <div id="map"></div>
+  <div id="logo">
+    <img src="download.jpeg" alt="Company Logo" style="width: 100px; height: auto;">
+  </div>
+  <footer>
+    Developed by Ir. Ahmed Abdelnour
+  </footer>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <!-- Leaflet Draw JS -->
+  <script src="https://unpkg.com/leaflet-draw/dist/leaflet.draw.js"></script>
+  <!-- Custom JS -->
+  <script src="script.js"></script>
+</body>
+</html>

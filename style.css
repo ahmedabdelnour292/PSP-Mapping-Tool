@@ -1,0 +1,127 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  overflow: hidden; /* Prevent body scrolling */
+}
+
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100vh;
+  padding: 20px;
+  background: #f4f4f4;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  overflow-y: auto; /* Enable scrolling for the sidebar */
+}
+
+#map {
+  position: fixed;
+  top: 0;
+  left: 300px;
+  width: calc(100% - 300px);
+  height: 100vh;
+}
+
+#logo {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1000; /* Ensure the logo is above the map */
+}
+
+.custom-draw-control {
+  position: absolute;
+  top: 120px; /* Adjust based on logo height */
+  right: 10px;
+  z-index: 1000;
+  background: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.custom-draw-control button {
+  display: block;
+  margin: 5px 0;
+  width: 100%;
+}
+
+label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+input[type="text"], input[type="file"], select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+}
+
+th, td {
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+input[type="number"] {
+  width: 60px;
+  padding: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 10px; /* Add spacing between buttons */
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Adjust Leaflet controls to avoid overlapping with the sidebar */
+.leaflet-control {
+  margin-left: 320px; /* Move controls to the right of the sidebar */
+}
+
+/* Style for the Finish button */
+#finish-button-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Style for the logo */
+#logo img {
+  width: 100px;
+  height: auto;
+}
+
+/* Footer */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #f4f4f4;
+  text-align: center;
+  padding: 10px;
+  z-index: 1000;
+  font-size: 14px; /* Reduced font size */
+}
